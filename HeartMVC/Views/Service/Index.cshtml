@@ -1,0 +1,165 @@
+﻿@{
+    ViewBag.Title = "Index";
+    int i = 0;
+}
+
+<script>
+
+    function UpStatus(name, action) {
+        $.ajax({
+            type: "POST",
+            url: "/Helper/UpAction",
+            data: { "Name": name, "Action": action },
+            dataType: "json",
+            success: function (json) {
+                if (json.Status == 1) {
+                    location.reload();
+                } else {
+                    alert(json.Message);
+                }
+            }
+        });
+    }
+
+    function loadConfig(name) {
+        $.ajax({
+            type: "POST",
+            url: "/Helper/GetConfig",
+            data: { "Key": name },
+            dataType: "json",
+            success: function (json) {
+                $('#txt_key').val(json.Key);
+                $('#txt_minutes').val(json.SpanTime);
+                $('#txt_starttime').val(json.StartTime);
+                $('#txt_endtime').val(json.EndTime);
+            }
+        });
+    }
+
+    function saveConfig() {
+        var obj = new Object();
+        obj.Key = $('#txt_key').val();
+        obj.SpanTime = $('#txt_minutes').val();
+        obj.StartTime = $('#txt_starttime').val();
+        obj.EndTime = $('#txt_endtime').val();
+
+        if (obj.SpanTime == "") {
+            alert('请间隔时间'); return;
+        }
+        if (obj.StartTime == "") {
+            alert('请输入起始时间'); return;
+        }
+        if (obj.EndTime == "") {
+            alert('请输入结束时间'); return;
+        }
+          
+
+        $.ajax({
+            type: "POST",
+            url: "/Helper/SaveConfig",
+            data: obj,
+            dataType: "json",
+            success: function (json) {
+                if (json.Status == 1) {
+                    alert(json.Message);
+                } else {
+                    alert(json.Message);
+                }
+            }
+        });
+    }
+
+</script>
+
+<div style="align-content: center">
+    <table class="table">
+        <thead><tr><th>序号</th><th>服务名称</th><th>描述</th><th>状态</th> <th>操作</th></tr></thead>
+        <tbody>
+            @foreach (KeyValuePair<string, HeartModel.StateMachine.HeartServerInfo> item in HeartMonitor.HeartServerDirMonitor.Single)
+            {
+                <tr>
+                    <td>@(++i)</td>
+                    <td>@item.Value.Name</td>
+                    <td>@item.Value.Description</td>
+                    <td><span class="label label-info">@item.Value.State</span> </td>
+                    <td>
+                        @if (@item.Value.State.ToString().Equals("NotLoaded"))
+                        {
+                            <button class="btn btn-success" onclick="UpStatus('@item.Value.Name','load')">加载</button>
+                        }
+                        else if (@item.Value.State.ToString().Equals("Loaded"))
+                        {
+                            <button class="btn btn-warning" onclick="UpStatus('@item.Value.Name','run')">启动</button>
+                            <button class="btn btn-danger" onclick="UpStatus('@item.Value.Name','unload')">卸载</button>
+                        }
+                        else if (@item.Value.State.ToString().Equals("Running"))
+                        {
+                            <button class="btn btn-danger" onclick="UpStatus('@item.Value.Name','pause')">停止</button>
+                        }
+                        else if (@item.Value.State.ToString().Equals("Exception"))
+                        {
+                            <button class="btn btn-danger" onclick="UpStatus('@item.Value.Name','unload')">卸载</button>
+                        }
+                        @if (!@item.Value.State.ToString().Equals("Running"))
+                        {
+                            <button class="btn btn-info" data-toggle="modal" data-target="#myModal" onclick="loadConfig('@item.Value.Name')">配置</button>
+                        }                 
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Key值</label>
+                        <div class="col-sm-5">
+                            <input id="txt_key" type="text" class="form-control" value="" disabled="disabled" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">间隔时间</label>
+                        <div class="col-sm-5">
+                            <input id="txt_minutes" class="form-control" type="text" value="" />
+                        </div>
+                        <span>(hh:mm:ss)时分秒</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">开始时间</label>
+                        <div class="col-sm-5">
+                            <input id="txt_starttime" class="form-control" type="text" value="" />
+                        </div>
+                        <span>(hh:mm)时分</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">结束时间</label>
+                        <div class="col-sm-5">
+                            <input id="txt_endtime" class="form-control" type="text" value="" />
+                        </div>
+                        <span>(hh:mm)时分</span>
+                    </div>
+                </form>
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="saveConfig()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>

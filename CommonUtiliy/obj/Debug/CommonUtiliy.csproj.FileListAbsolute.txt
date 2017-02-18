@@ -1,0 +1,5 @@
+F:\Heart\HeartServer\CommonUtiliy\bin\Debug\CommonUtiliy.dll
+F:\Heart\HeartServer\CommonUtiliy\bin\Debug\CommonUtiliy.pdb
+F:\Heart\HeartServer\CommonUtiliy\obj\Debug\CommonUtiliy.csprojResolveAssemblyReference.cache
+F:\Heart\HeartServer\CommonUtiliy\obj\Debug\CommonUtiliy.dll
+F:\Heart\HeartServer\CommonUtiliy\obj\Debug\CommonUtiliy.pdb

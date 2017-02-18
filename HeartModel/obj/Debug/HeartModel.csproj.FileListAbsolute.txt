@@ -1,0 +1,13 @@
+F:\Heart\HeartServer\HeartModel\bin\Debug\HeartModel.XML
+F:\Heart\HeartServer\HeartModel\bin\Debug\HeartModel.dll
+F:\Heart\HeartServer\HeartModel\bin\Debug\HeartModel.pdb
+F:\Heart\HeartServer\HeartModel\bin\Debug\CommonUtiliy.dll
+F:\Heart\HeartServer\HeartModel\bin\Debug\log4net.dll
+F:\Heart\HeartServer\HeartModel\bin\Debug\ZJGT.LogHelper.dll
+F:\Heart\HeartServer\HeartModel\bin\Debug\Newtonsoft.Json.dll
+F:\Heart\HeartServer\HeartModel\bin\Debug\CommonUtiliy.pdb
+F:\Heart\HeartServer\HeartModel\bin\Debug\ZJGT.LogHelper.pdb
+F:\Heart\HeartServer\HeartModel\bin\Debug\log4net.xml
+F:\Heart\HeartServer\HeartModel\obj\Debug\HeartModel.csprojResolveAssemblyReference.cache
+F:\Heart\HeartServer\HeartModel\obj\Debug\HeartModel.dll
+F:\Heart\HeartServer\HeartModel\obj\Debug\HeartModel.pdb

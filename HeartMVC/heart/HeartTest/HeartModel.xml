@@ -1,0 +1,415 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>HeartModel</name>
+    </assembly>
+    <members>
+        <member name="T:HeartModel.AppDomainHelper">
+            <summary>
+            AppDomain辅助类
+            </summary>
+        </member>
+        <member name="F:HeartModel.AppDomainHelper.HeartClassName">
+            <summary>
+            心跳类名
+            </summary>
+        </member>
+        <member name="M:HeartModel.AppDomainHelper.CreateHeartServerAppDomain(System.String,System.String,System.String)">
+            <summary>
+            创建新的AppDomain
+            </summary>
+            <param name="filePath"></param>
+            <param name="dirPath"></param>
+            <param name="appDomainName"></param>
+            <returns></returns>
+        </member>
+        <member name="M:HeartModel.AppDomainHelper.CreateHeart(System.AppDomain,System.String,System.String)">
+            <summary>
+            创建一个心跳代理类
+            </summary>
+            <param name="domain"></param>
+            <param name="assemblyName"></param>
+            <param name="className"></param>
+            <returns></returns>
+        </member>
+        <member name="T:HeartModel.ErrorEvent">
+            <summary>
+            错误事件信息定义
+            </summary>
+        </member>
+        <member name="T:HeartModel.ExceptionEvent">
+            <summary>
+            异常信息时间定义
+            </summary>
+        </member>
+        <member name="F:HeartModel.ExceptionEvent.exInfo">
+            <summary>
+            异常对象
+            </summary>
+        </member>
+        <member name="T:HeartModel.HeartBase">
+            <summary>
+            心跳服务抽象类  所有心跳继承自该类
+            </summary>
+        </member>
+        <member name="T:HeartModel.IHeartServer">
+            <summary>
+            心跳服务接口
+            </summary>
+        </member>
+        <member name="M:HeartModel.IHeartServer.Do">
+            <summary>
+            心跳服务需要执行的内容
+            </summary>
+        </member>
+        <member name="M:HeartModel.IHeartServer.GetHeartName">
+            <summary>
+            心跳服务名称
+            </summary>
+        </member>
+        <member name="M:HeartModel.IHeartServer.GetDescription">
+            <summary>
+            心跳服务描述
+            </summary>
+        </member>
+        <member name="F:HeartModel.HeartBase.span">
+            <summary>
+            心跳运行时间配置
+            </summary>
+        </member>
+        <member name="M:HeartModel.HeartBase.SendExceptionEvent(HeartModel.ExceptionEvent)">
+            <summary>
+            发送异常
+            </summary>
+            <param name="age"></param>
+        </member>
+        <member name="M:HeartModel.HeartBase.#ctor">
+            <summary>
+            构造方法
+            </summary>
+        </member>
+        <member name="M:HeartModel.HeartBase.Do">
+            <summary>
+            需要执行的任务
+            </summary>
+        </member>
+        <member name="M:HeartModel.HeartBase.GetHeartName">
+            <summary>
+            心跳服务名称
+            </summary>
+        </member>
+        <member name="M:HeartModel.HeartBase.GetDescription">
+            <summary>
+            心跳服务具体描述
+            </summary>
+        </member>
+        <member name="M:HeartModel.HeartBase.InitializeLifetimeService">
+            <summary>
+            获取控制此实例的生存期策略的生存期服务对象
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="E:HeartModel.HeartBase.OnException">
+            <summary>
+            异常事件
+            </summary>
+        </member>
+        <member name="P:HeartModel.HeartBase.Span">
+            <summary>
+            心跳运行时间配置
+            </summary>
+        </member>
+        <member name="T:HeartModel.StateMachine.ExceptionHeart">
+            <summary>
+            心跳状态  异常
+            </summary>
+        </member>
+        <member name="T:HeartModel.StateMachine.HeartStateBase">
+            <summary>
+            心跳状态机抽象类
+            </summary>
+        </member>
+        <member name="T:HeartModel.StateMachine.IStateMachine">
+            <summary>
+            心跳状态机
+            </summary>
+        </member>
+        <member name="M:HeartModel.StateMachine.IStateMachine.Load">
+            <summary>
+            加载AppDomain
+            </summary>
+        </member>
+        <member name="M:HeartModel.StateMachine.IStateMachine.Unload">
+            <summary>
+            卸载AppDomain
+            </summary>
+        </member>
+        <member name="M:HeartModel.StateMachine.IStateMachine.Run">
+            <summary>
+            运行心跳
+            </summary>
+        </member>
+        <member name="M:HeartModel.StateMachine.IStateMachine.Pause">
+            <summary>
+            暂停心跳
+            </summary>
+        </member>
+        <member name="M:HeartModel.StateMachine.IStateMachine.ReceiveException(System.Exception)">
+            <summary>
+            
+            </summary>
+            <param name="ex"></param>
+        </member>
+        <member name="F:HeartModel.StateMachine.HeartStateBase.objLock">
+            <summary>
+            排斥锁
+            </summary>
+        </member>
+        <member name="F:HeartModel.StateMachine.HeartStateBase.heartInfo">
+            <summary>
+            心跳信息
+            </summary>
+        </member>
+        <member name="M:HeartModel.StateMachine.HeartStateBase.#ctor(HeartModel.StateMachine.HeartServerInfo)">
+            <summary>
+            构造函数
+            </summary>
+            <param name="hsInfo"></param>
+        </member>
+        <member name="M:HeartModel.StateMachine.HeartStateBase.Load">
+            <summary>
+            加载心跳AppDomain
+            </summary>
+        </member>
+        <member name="M:HeartModel.StateMachine.HeartStateBase.Unload">
+            <summary>
+            卸载心跳AppDomain
+            </summary>
+        </member>
+        <member name="M:HeartModel.StateMachine.HeartStateBase.Run">
+            <summary>
+            运行心跳
+            </summary>
+        </member>
+        <member name="M:HeartModel.StateMachine.HeartStateBase.Pause">
+            <summary>
+            暂停心跳
+            </summary>
+        </member>
+        <member name="M:HeartModel.StateMachine.HeartStateBase.ReceiveException(System.Exception)">
+            <summary>
+            接受异常信息
+            </summary>
+            <param name="ex"></param>
+        </member>
+        <member name="P:HeartModel.StateMachine.HeartStateBase.State">
+            <summary>
+            心跳状态
+            </summary>
+        </member>
+        <member name="M:HeartModel.StateMachine.ExceptionHeart.#ctor(HeartModel.StateMachine.HeartServerInfo)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="hsInfo"></param>
+        </member>
+        <member name="M:HeartModel.StateMachine.ExceptionHeart.Unload">
+            <summary>
+            卸载AppDomain
+            </summary>
+        </member>
+        <member name="P:HeartModel.StateMachine.ExceptionHeart.State">
+            <summary>
+            异常状态
+            </summary>
+        </member>
+        <member name="T:HeartModel.StateMachine.HeartServerState">
+            <summary>
+            心跳状态枚举
+            </summary>
+        </member>
+        <member name="F:HeartModel.StateMachine.HeartServerState.NotLoaded">
+            <summary>
+            未加载
+            </summary>
+        </member>
+        <member name="F:HeartModel.StateMachine.HeartServerState.Loaded">
+            <summary>
+            已加载
+            </summary>
+        </member>
+        <member name="F:HeartModel.StateMachine.HeartServerState.Running">
+            <summary>
+            运行中
+            </summary>
+        </member>
+        <member name="F:HeartModel.StateMachine.HeartServerState.Exception">
+            <summary>
+            异常
+            </summary>
+        </member>
+        <member name="T:HeartModel.StateMachine.HeartServerInfo">
+            <summary>
+            心跳服务信息类，以及状态
+            </summary>
+        </member>
+        <member name="M:HeartModel.StateMachine.HeartServerInfo.#ctor">
+            <summary>
+            心跳服务信息构造方法
+            </summary>
+        </member>
+        <member name="M:HeartModel.StateMachine.HeartServerInfo.Run">
+            <summary>
+            运行
+            </summary>
+        </member>
+        <member name="M:HeartModel.StateMachine.HeartServerInfo.Pause">
+            <summary>
+            暂停
+            </summary>
+        </member>
+        <member name="M:HeartModel.StateMachine.HeartServerInfo.Load">
+            <summary>
+            加载
+            </summary>
+        </member>
+        <member name="M:HeartModel.StateMachine.HeartServerInfo.Unload">
+            <summary>
+            卸载
+            </summary>
+        </member>
+        <member name="M:HeartModel.StateMachine.HeartServerInfo.ReceiveException(System.Exception)">
+            <summary>
+            异常处理
+            </summary>
+        </member>
+        <member name="P:HeartModel.StateMachine.HeartServerInfo.Name">
+            <summary>
+            心跳名
+            </summary>
+        </member>
+        <member name="P:HeartModel.StateMachine.HeartServerInfo.DirPath">
+            <summary>
+            心跳服务运行的文件夹
+            </summary>
+        </member>
+        <member name="P:HeartModel.StateMachine.HeartServerInfo.AssemblyFilePath">
+            <summary>
+            心跳程序集全路径，用以加载心跳服务到内存
+            </summary>
+        </member>
+        <member name="P:HeartModel.StateMachine.HeartServerInfo.Description">
+            <summary>
+            心跳服务描述
+            </summary>
+        </member>
+        <member name="P:HeartModel.StateMachine.HeartServerInfo.State">
+            <summary>
+            读取心跳服务状态
+            </summary>
+        </member>
+        <member name="P:HeartModel.StateMachine.HeartServerInfo.HeartDomain">
+            <summary>
+            心跳服务加载到内存中的程序域
+            </summary>
+        </member>
+        <member name="P:HeartModel.StateMachine.HeartServerInfo.Heart">
+            <summary>
+            心跳服务基类
+            </summary>
+        </member>
+        <member name="T:HeartModel.StateMachine.LoadedHeart">
+            <summary>
+            心跳服务加载到内存状态
+            </summary>
+        </member>
+        <member name="M:HeartModel.StateMachine.LoadedHeart.#ctor(HeartModel.StateMachine.HeartServerInfo)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="hsInfo"></param>
+        </member>
+        <member name="M:HeartModel.StateMachine.LoadedHeart.Run">
+            <summary>
+            运行心跳
+            </summary>
+        </member>
+        <member name="M:HeartModel.StateMachine.LoadedHeart.Unload">
+            <summary>
+            从内存卸载心跳服务
+            </summary>
+        </member>
+        <member name="P:HeartModel.StateMachine.LoadedHeart.State">
+            <summary>
+            已加载到内存状态
+            </summary>
+        </member>
+        <member name="T:HeartModel.StateMachine.NotloadedHeart">
+            <summary>
+            心跳服务(*.dll)未加载到内存
+            </summary>
+        </member>
+        <member name="M:HeartModel.StateMachine.NotloadedHeart.#ctor(HeartModel.StateMachine.HeartServerInfo)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="hsInfo"></param>
+        </member>
+        <member name="M:HeartModel.StateMachine.NotloadedHeart.Load">
+            <summary>
+            加载心跳服务到内存
+            </summary>
+        </member>
+        <member name="P:HeartModel.StateMachine.NotloadedHeart.State">
+            <summary>
+            未加载状态
+            </summary>
+        </member>
+        <member name="T:HeartModel.StateMachine.RunningHeart">
+            <summary>
+            心跳运行状态
+            </summary>
+        </member>
+        <member name="M:HeartModel.StateMachine.RunningHeart.#ctor(HeartModel.StateMachine.HeartServerInfo)">
+            <summary>
+            构造方法
+            </summary>
+            <param name="hsInfo">心跳信息</param>
+        </member>
+        <member name="M:HeartModel.StateMachine.RunningHeart.Pause">
+            <summary>
+            停止
+            </summary>
+        </member>
+        <member name="P:HeartModel.StateMachine.RunningHeart.State">
+            <summary>
+            运行状态
+            </summary>
+        </member>
+        <member name="T:HeartModel.TimeConfig">
+            <summary>
+            心跳启动/间隔配置
+            </summary>
+        </member>
+        <member name="M:HeartModel.TimeConfig.#ctor">
+            <summary>
+            构造方法
+            </summary>
+        </member>
+        <member name="P:HeartModel.TimeConfig.Span">
+            <summary>
+            心跳时间间隔
+            </summary>
+        </member>
+        <member name="P:HeartModel.TimeConfig.Start">
+            <summary>
+            心跳执行时间区间  开始时间
+            </summary>
+        </member>
+        <member name="P:HeartModel.TimeConfig.End">
+            <summary>
+            心跳执行时间区间  结束时间
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,15 @@
+F:\Heart\HeartServer\HeartMonitor\bin\Debug\HeartMonitor.dll
+F:\Heart\HeartServer\HeartMonitor\bin\Debug\HeartMonitor.pdb
+F:\Heart\HeartServer\HeartMonitor\bin\Debug\CommonUtiliy.dll
+F:\Heart\HeartServer\HeartMonitor\bin\Debug\HeartModel.dll
+F:\Heart\HeartServer\HeartMonitor\bin\Debug\ZJGT.LogHelper.dll
+F:\Heart\HeartServer\HeartMonitor\bin\Debug\log4net.dll
+F:\Heart\HeartServer\HeartMonitor\bin\Debug\Newtonsoft.Json.dll
+F:\Heart\HeartServer\HeartMonitor\bin\Debug\CommonUtiliy.pdb
+F:\Heart\HeartServer\HeartMonitor\bin\Debug\HeartModel.pdb
+F:\Heart\HeartServer\HeartMonitor\bin\Debug\HeartModel.xml
+F:\Heart\HeartServer\HeartMonitor\bin\Debug\ZJGT.LogHelper.pdb
+F:\Heart\HeartServer\HeartMonitor\bin\Debug\log4net.xml
+F:\Heart\HeartServer\HeartMonitor\obj\Debug\HeartMonitor.csprojResolveAssemblyReference.cache
+F:\Heart\HeartServer\HeartMonitor\obj\Debug\HeartMonitor.dll
+F:\Heart\HeartServer\HeartMonitor\obj\Debug\HeartMonitor.pdb

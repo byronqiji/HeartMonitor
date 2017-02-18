@@ -1,0 +1,5 @@
+F:\Heart\DLL\LogHelper\Debug\AnyCPU\ZJGT.LogHelper.dll
+F:\Heart\DLL\LogHelper\Debug\AnyCPU\ZJGT.LogHelper.pdb
+F:\Heart\HeartServer\LogHelper\obj\Debug\LogHelper.csprojResolveAssemblyReference.cache
+F:\Heart\HeartServer\LogHelper\obj\Debug\ZJGT.LogHelper.dll
+F:\Heart\HeartServer\LogHelper\obj\Debug\ZJGT.LogHelper.pdb

@@ -1,0 +1,105 @@
+﻿@using HeartMonitor
+
+@{
+    ViewBag.Title = "Index";
+    int i = 0;
+}
+
+<script type="text/javascript">
+    function loadInfo(key) {
+        $.ajax({
+            type: "POST",
+            url: "/Monitor/GetModel",
+            data: {"key":key},
+            dataType: "json",
+            success: function (json) {
+                $('#txt_key').val(json.Key);
+                $('#txt_name').val(json.Name);
+                $('#txt_value').val(json.Value);
+                $('#txt_desc').val(json.Description);
+            }
+        });
+    };
+
+    function saveInfo() {
+        var obj = new Object();
+        obj.Key = $('#txt_key').val();
+        obj.Name = $('#txt_name').val();
+        obj.Value = $('#txt_value').val();
+        obj.Description = $('#txt_desc').val();
+        $.ajax({
+            type: "POST",
+            url: "/Monitor/Save",
+            data: obj,
+            dataType: "json",
+            success: function (json) {
+                if (json.Status == 1) {
+                    alert(json.Message);
+                    $('#myModal').modal('hide');
+                } else {
+                    alert(json.Message);
+                }
+            }
+        });
+    }
+</script>
+<div style="align-content: center">
+    <table class="table">
+        <thead><tr><th>序号</th><th>Key值</th><th>名称</th><th>值</th><th>描述</th> <th>操作</th></tr></thead>
+        <tbody>
+            @foreach (KeyValuePair<string, Parameter> item in Model)
+            {
+                <tr>
+                    <td>@(++i)</td>
+                    <td>@item.Value.Key</td>
+                    <td>@item.Value.Name</td>
+                    <td>@item.Value.Value</td>
+                    <td>@item.Value.Description</td>
+                    <td>
+                        <button class="btn btn-default" data-toggle="modal" data-target="#myModal" onclick="loadInfo('@item.Value.Key')">编辑</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+
+<!-- Modal -->
+<div id="myModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+            </div>
+            <div class="modal-body">
+                <table class="table table-bordered table-striped">
+                    <tbody>
+                        <tr>
+                            <th style="width:85px">Key值</th>
+                            <td><input id="txt_key" type="text" value="" disabled="disabled" /></td>
+                        </tr>
+                        <tr>
+                            <th>名称</th>
+                            <td><input id="txt_name" type="text" value="" /></td>
+                        </tr>
+                        <tr>
+                            <th style="width:85px">值</th>
+                            <td><input id="txt_value" type="text" value="" /></td>
+                        </tr>
+                        <tr>
+                            <th>描述</th>
+                            <td><textarea id="txt_desc" rows="5" cols="30"></textarea></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="saveInfo()">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
